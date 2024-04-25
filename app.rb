@@ -37,10 +37,10 @@ get("/payment/results") do
   @principal_input = params.fetch("principal_input").to_f
 
   @monthly_rate = @user_apr / 12
-  total_payments = years * 12
+  @total_payments = years * 12
 
   # Monthly Payment Formula
-  @monthly_payment = @principal_input * (@monthly_rate / (1 - (1 + @monthly_rate)
+  @monthly_payment = @principal_input * (@monthly_rate / (1 - (1 + @monthly_rate)**(-@total_payments)))
 
   erb(:payment_results)
 end
