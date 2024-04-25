@@ -7,7 +7,7 @@
     APR
   </dt>
   <dd>
-    <%= @apr %>
+    <%= @apr.to_fs(:percentage, {:precision => 4}) %>
   </dd>
 
   <dt>
@@ -21,14 +21,14 @@
     Principal
   </dt>
   <dd>
-    <%= @principle_input %>
+    <%= @principal_input.to_fs(:currency) %>
   </dd>
 
   <dt>
     Payment
   </dt>
   <dd>
-    <%= @monthly_payment.round(2) %>
+    <%= @monthly_payment.to_fs(:currency) %>
   </dd>
 </dl>
 

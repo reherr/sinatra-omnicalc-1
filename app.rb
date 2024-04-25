@@ -33,6 +33,7 @@ get("/payment/new") do
 end
 get("/payment/results") do
   @apr = params.fetch("user_apr").to_f
+  
   @user_apr = params.fetch("user_apr").to_f / 100
   
 
@@ -40,11 +41,13 @@ get("/payment/results") do
   
   @principal_input = params.fetch("user_pv").to_f
   
+  
 
   @monthly_rate = @user_apr / 12
   @total_payments = @years_input * 12
 
   @monthly_payment = @principal_input * (@monthly_rate / (1 - (1 + @monthly_rate)**(-@total_payments)))
+ 
   
 
   erb(:payment_results)
