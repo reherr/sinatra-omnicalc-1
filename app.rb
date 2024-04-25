@@ -27,3 +27,20 @@ get("/square_root/results") do
 @the_result = Math.sqrt(@the_num)
   erb(:square_root_results)
 end
+
+get("/payment/new") do
+ erb(:payment_new) 
+end
+get("/payment/results") do
+  @user_apr = params.fetch("user_apr").to_f / 100
+  @years_input = params.fetch("years_input").to_f
+  @principal_input = params.fetch("principal_input").to_f
+
+  @monthly_rate = @user_apr / 12
+  total_payments = years * 12
+
+  # Monthly Payment Formula
+  @monthly_payment = @principal_input * (@monthly_rate / (1 - (1 + @monthly_rate)
+
+  erb(:payment_results)
+end
