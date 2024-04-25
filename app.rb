@@ -33,8 +33,8 @@ get("/payment/new") do
 end
 get("/payment/results") do
   @user_apr = params.fetch("user_apr").to_f / 100
-  @years_input = params.fetch("years_input").to_f
-  @principal_input = params.fetch("principal_input").to_f
+  @years_input = params.fetch("user_years").to_f
+  @principal_input = params.fetch("user_pv").to_f
 
   @monthly_rate = @user_apr / 12
   @total_payments = years * 12
